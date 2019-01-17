@@ -4,10 +4,13 @@ import Menu from './MenuComponent';
 import Dishdetail from './DishDetailComponents';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import Home from './HomeComponent';
+import Contact from './ContactComponent';
+
 
 const MenuNavigator = createStackNavigator({
     Menu: { screen: Menu },
-    Dishdetail: { screen: Dishdetail }
+    Dishdetail: { screen: Dishdetail },
+    Contact: { screen: Contact}
 },
 {
     initialRouteName: 'Menu',
@@ -22,6 +25,10 @@ const MenuNavigator = createStackNavigator({
     }
 }
 );
+
+const ContactNavigator = createStackNavigator({ 
+    Contact: {screen: Contact}
+});
 
 const HomeNavigator = createStackNavigator({
     Home: { screen: Home },
@@ -45,6 +52,13 @@ const MainNavigator = createDrawerNavigator({
         navigationOptions: { 
             title: 'Home', 
             drawerLabel: 'Home'
+        }
+    }, 
+    Contact: {
+        screen: ContactNavigator,
+        navigationOptions: { 
+            title: 'Contact', 
+            drawerLabel: 'Contact'
         }
     }, 
     Menu: {
