@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import { Card, ListItem, Button, Icon } from 'react-native-elements';
+import {View, Text } from 'react-native';
 
 class Contact extends React.Component {
     render() {
