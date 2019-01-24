@@ -3,15 +3,16 @@ import {Text, ScrollView}  from 'react-native';
 import {Card, ListItem} from 'react-native-elements';
 import {LEADERS} from '../shared/leaders';
 import LeaderDetail from './LeaderDetailComponent';
+import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
+
+const mapStateToProps = state => { 
+    return { 
+        leaders: state.leaders
+    }
+}
 
 class About extends React.Component { 
-
-    constructor(props) { 
-        super(props);
-        this.state = { 
-            leaders: LEADERS
-        }
-    }
 
     render() { 
         const {navigate} = this.props.navigation;
@@ -28,13 +29,13 @@ class About extends React.Component {
                 <Card
                     title = 'Corporate Leadership'>
                     {
-                        this.state.leaders.map((leader, key) => { 
+                        this.props.leaders.leaders.map((leader, key) => { 
                             return (
                                 <ListItem
                                 key = {key}
                                 title = {leader.name}
                                 subtitle = {leader.description}
-                                leftAvatar = {{ source: require('./images/alberto.png')}}
+                                leftAvatar = {{ source: {uri: baseUrl + leader.image }}}
                                 onPress = {() => navigate('LeaderDetail', {leaderId: leader.id})}
                                 />
                             );
@@ -46,4 +47,4 @@ class About extends React.Component {
     }
 }
 
-export default About;
+export default connect(mapStateToProps)(About);
